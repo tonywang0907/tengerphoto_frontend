@@ -1,38 +1,292 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Nunito+Sans:wght@700&display=swap');
+
+* { 
+    font-family: Inconsolata, NunitoSans, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar */
+ul {
+    list-style-type: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.links {
+    text-decoration: none;
+    color: #000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#nav_container {
+    position: fixed; /* Make the navbar stick to the top of the page */
+    top: 0; /* Stick to the top */
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 5px solid #000;
+    /* background: #9198e5; */
 }
 
-.App-link {
-  color: #61dafb;
+#logo_container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#logo_container img {
+    background: #000;
+    border-radius: 50px;
+}
+
+#logo_container p {
+    font-weight: bold;
+}
+
+#nav_bar_container {
+    /* Adjusting nav bar spacing */
+    margin-bottom: 100px; 
+}
+#nav_bar_container li {
+    margin-bottom: 30px;
+}
+
+#nav_bar_container .links {
+    position: relative;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+#nav_bar_container .links:after {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+#nav_bar_container .links:hover:after,
+#nav_bar_container .active:after {
+   width: 100%;
+}
+
+#social_links_container ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+#showcase_container,
+#gallery_container,
+#about_container,
+#contact_container {
+    padding: 20px;
+    margin-left: 300px;
+    /* background: #d9d1e1; */
+    /* background: linear-gradient(to bottom, #e66465, #9198e5); */
+}
+
+/* Showcase Container */
+#loader_icon {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#showcase_images,
+#gallery_images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#showcase_images img,
+#gallery_images img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#showcase_image {
+    position: relative;
+}
+
+#showcase_image_content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+#showcase_image_content h1 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+#showcase_image_content p {
+    border: 1px solid #fff;
+    padding: 5px;
+    margin-top: 20px;
+    color: #fff;
+}
+
+#showcase_image_content:hover {
+    opacity: 1;
+}
+
+/* Portfolio  */
+
+#gallery_container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+#categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0px 100px;
+}
+
+#categories li {
+    margin: 10px 20px;
+    cursor: pointer;
+}
+
+#categories .links {
+    position: relative;
+}
+
+#categories .links:after {
+    content: "";
+    position: absolute;
+    background-color: black;
+    height: 3px;
+    left: 0;
+    width: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+#categories .links:hover:after,
+#categories .active:after {
+    width: 100%;
+}
+
+#gallery {
+    margin: 20px 150px;
+}
+
+#gallery_images img {
+    border: 1px solid #000;
+}
+
+#gallery_sort {
+    /* background-color: #9198e5; */
+    border: 1px solid #000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+    padding: 10px;
+}
+
+/* About  */
+
+#about_container {
+    height: 100vh;
+}
+
+#contact_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    text-transform: uppercase;
+    padding: 10px 100px;
+    background-color: #fff;
+}
+
+#about_inner_container {
+    padding: 50px;
+    display: flex;
+    gap: 30px;
+}
+
+#about_inner_left_container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#name {
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: -2px;
+    
+}
+
+#title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+#about_me_container {
+    display: flex;
+    gap: 40px;
+}
+
+#about_me_container h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#about_me_container p {
+    line-height: 2;
+}
+
+
+#about_inner_right_container {
+    width: 60%;
+}
+
+#brians_insta {
+    display: flex;
+    margin: auto;
+    width: 55%;
+    height: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#about_links {
+    display: flex;
+    gap: 30px;
+    margin: auto;
+}
+
+.links_box {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #000;
 }
